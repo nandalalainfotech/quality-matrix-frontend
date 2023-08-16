@@ -1,6 +1,7 @@
 import { BaseEntity } from "./BaseEntity";
 
 export class Employeedetails001mb extends BaseEntity {
+    employeeId?: number | any;
     slNo?: number | any;
     employeename?: string;
     addressline1?: string;

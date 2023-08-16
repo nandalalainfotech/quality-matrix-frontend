@@ -26,6 +26,7 @@ export class EmployeedetailsComponent implements OnInit {
   employeedetailsForm: FormGroup | any;
   resetForm: FormGroup | any;
   slNo: number | any;
+  employeeId: number | any;
   insertUser: string = "";
   insertDatetime: Date | any;
   employeename: string = "";
@@ -64,6 +65,9 @@ export class EmployeedetailsComponent implements OnInit {
   colorControl = new FormControl('primary' as ThemePalette);
 
   ngOnInit() {
+
+    console.log("employee---------------------", this.employee);
+
     let users: any[] = [];
     // this.control.markAsTouched();
     this.username = this.authManager.getcurrentUser.username;
@@ -97,6 +101,12 @@ export class EmployeedetailsComponent implements OnInit {
 
     this.loaddata();
     this.createDataGrid001();
+    this.courseManager.allcourse(this.username).subscribe((response: any) => {
+      console.log("response---->333", response);
+
+      this.course = deserialize<Course001mb[]>(Course001mb, response);
+      console.log("regionmaster---->334", this.course);
+    });
   }
 
   username = this.authManager.getcurrentUser.username;
@@ -109,12 +119,7 @@ export class EmployeedetailsComponent implements OnInit {
         this.gridOptions?.api?.setRowData([]);
       }
     })
-    this.courseManager.allcourse(this.username).subscribe((response: any) => {
-      console.log("response---->333", response);
 
-      this.course = deserialize<Course001mb[]>(Course001mb, response);
-      console.log("regionmaster---->334", this.course);
-    });
 
   }
 
@@ -302,16 +307,17 @@ export class EmployeedetailsComponent implements OnInit {
     ];
   }
 
-  setCourse(params : any): string {
-    // console.log("params--->", params);
+  setCourse(params: any): string {
+    console.log("params--->", params);
     // params.slNo = this.course.map(({ coursename }) => coursename)
-    // console.log("params=====>", params);
-    
-    return params.data.slNo ? params.data.slNo: null;
+    // console.log("params=====>", params);params.data.dslno2.doctorname : null;
+    // return params.data.mslno2 ? params.data.mslno2.machinename : null;
+
+    return params.data.slNo2 ? params.data.slNo2.coursename : null;
   }
 
   onEditButtonClick(params: any) {
-    this.slNo = params.data.slNo;
+    this.employeeId = params.data.employeeId;
     this.insertUser = params.data.insertUser;
     this.insertDatetime = params.data.insertDatetime;
     this.employeedetailsForm.patchValue({
@@ -332,9 +338,9 @@ export class EmployeedetailsComponent implements OnInit {
   onDeleteButtonClick(params: any) {
     console.log("params", params);
 
-    this.employeedetailsManager.deleteemployeedetails(params.data.slNo).subscribe((response) => {
+    this.employeedetailsManager.deleteemployeedetails(params.data.employeeId).subscribe((response) => {
       for (let i = 0; i < this.employee.length; i++) {
-        if (this.employee[i].slNo == params.data.slNo) {
+        if (this.employee[i].employeeId == params.data.employeeId) {
           this.employee?.splice(i, 1);
           break;
         }
@@ -384,8 +390,8 @@ export class EmployeedetailsComponent implements OnInit {
     employeedetails001mb.pincode = this.f.pincode.value ? this.f.pincode.value : 0;
     employeedetails001mb.state = this.f.state.value ? this.f.state.value : "";
     employeedetails001mb.status = this.f.status.value ? this.f.status.value : false;
-    if (this.slNo) {
-      employeedetails001mb.slNo = this.slNo;
+    if (this.employeeId) {
+      employeedetails001mb.employeeId = this.employeeId;
       employeedetails001mb.insertUser = this.insertUser;
       employeedetails001mb.insertDatetime = this.insertDatetime;
       employeedetails001mb.updatedUser = this.authManager.getcurrentUser.username;
@@ -394,7 +400,8 @@ export class EmployeedetailsComponent implements OnInit {
         this.calloutService.showSuccess("Course Name Details Updated Successfully");
         let employeedetails001mb = deserialize<Employeedetails001mb>(Employeedetails001mb, response);
         for (let employees of this.employee) {
-          if (employees.slNo == employeedetails001mb.slNo) {
+          if (this.employeeId) {
+            employees.employeeId == employeedetails001mb.employeeId
             employees.addressline1 = employeedetails001mb.addressline1;
             employees.addressline2 = employeedetails001mb.addressline2;
             employees.city = employeedetails001mb.city;
@@ -420,7 +427,7 @@ export class EmployeedetailsComponent implements OnInit {
         this.loaddata();
         this.submitted = false;
         data.resetForm();
-        this.slNo = null;
+        this.employeeId = null;
       });
     }
     else {
@@ -442,6 +449,7 @@ export class EmployeedetailsComponent implements OnInit {
       })
     }
   }
+
   onReset(data: any) {
     this.employeedetailsForm.reset();
     data.resetForm();

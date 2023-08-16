@@ -59,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
 		AuditComponent,
 		UserRegistrationComponent,
 		IconRendererComponent,
-		ChangePasswordComponent
+		ChangePasswordComponent,
+		
 	],
 	imports: [
 		CommonModule,

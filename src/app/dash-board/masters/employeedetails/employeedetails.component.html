@@ -90,8 +90,8 @@
             <mat-label class="font">Course Name</mat-label>
             <mat-select formControlName="slNo" class="mat">
                 <mat-option>- Select the Course - </mat-option>
-                <mat-option *ngFor="let coursename of course" [value]="coursename.slNo">
-                    {{coursename.coursename}}
+                <mat-option *ngFor="let slNo of course" [value]="slNo.slNo">
+                    {{slNo.coursename}}
                 </mat-option>
             </mat-select>
             <mat-error
@@ -100,7 +100,9 @@
             </mat-error>
         </mat-form-field>
         <!-- <mat-form-field color="coursename.value!" appearance="outline">
-            <mat-label class="font">Course Name</mat-label>
+            <mat-label class="font">Course Name</mat-label>  <mat-option *ngFor="let dslno of Doctormaster" [value]="dslno.slNo">
+                    {{dslno.doctorname}}
+                </mat-option>
             <mat-select matInput formControlName="coursename" required class="mat" >
                 <mat-option value="primary">- Select the Region -</mat-option>
                 <mat-option *ngFor="let coursename of course" [value]="coursename.coursename">
