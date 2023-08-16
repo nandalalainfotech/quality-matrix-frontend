@@ -1,0 +1,98 @@
+{
+  "/testandreportstudio/api/appsettings/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/applanguage/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/auth/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/bookingentry/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/caseentry/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/casemachine/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/doctormaster/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/employeemaster/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/employeedetails/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+
+  "/testandreportstudio/api/course/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/filemanager/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrgin": true
+  },
+  "/testandreportstudio/api/machinemaster/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/regionmaster/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/role/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/systemproperties/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/testandreportstudio/api/user/*": {
+    "target": "http://localhost:7000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

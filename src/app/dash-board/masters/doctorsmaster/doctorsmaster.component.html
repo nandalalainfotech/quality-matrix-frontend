@@ -1,0 +1,132 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Doctors Master</legend>
+    <form class="my-form" [formGroup]="doctorForm" (ngSubmit)="onOrderClick($event, doctorForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Doctor Name</mat-label>
+            <input matInput formControlName="doctorname" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['doctorname'].invalid && doctorForm.controls['doctorname'].touched">
+                Doctor Name is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Email Address</mat-label>
+            <input matInput placeholder="Email" formControlName="emailid" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['emailid'].hasError('required') && doctorForm.controls['emailid'].touched">
+                Email is required.
+            </mat-error>
+            <mat-error
+                *ngIf="doctorForm.controls['emailid'].hasError('email') && doctorForm.controls['emailid'].touched">
+                Invalid email format.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Contact Number</mat-label>
+            <input matInput placeholder="contactnumber" formControlName="contactnumber" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['contactnumber'].hasError('required') && doctorForm.controls['contactnumber'].touched">
+                contactnumber is required.
+            </mat-error>
+            <mat-error
+                *ngIf="doctorForm.controls['contactnumber'].hasError('pattern') && doctorForm.controls['contactnumber'].touched">
+                Please enter a valid 10-digit contactnumber.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Hospital Name</mat-label>
+            <input matInput formControlName="hospitalname" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['hospitalname'].invalid && doctorForm.controls['hospitalname'].touched">
+                Hospital Name is required.
+            </mat-error>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Address Line 1</mat-label>
+            <input matInput formControlName="addressline1" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['addressline1'].invalid && doctorForm.controls['addressline1'].touched">
+                Address Line 1 is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Address Line 2</mat-label>
+            <input matInput formControlName="addressline2" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['addressline2'].invalid && doctorForm.controls['addressline2'].touched">
+                Address Line 2 is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">City</mat-label>
+            <input matInput formControlName="city" class="mat">
+            <mat-error *ngIf="submitted && doctorForm.controls['city'].invalid && doctorForm.controls['city'].touched">
+                City is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">State</mat-label>
+            <input matInput formControlName="state" class="mat">
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['state'].invalid && doctorForm.controls['state'].touched">
+                State is required.
+            </mat-error>
+        </mat-form-field>
+        <br> <br>
+        <mat-form-field color="region.value!" appearance="outline">
+            <mat-label class="font">Region</mat-label>
+            <mat-select matInput formControlName="region" required class="mat">
+                <mat-option value="primary">- Select the Region -</mat-option>
+                <mat-option *ngFor="let region of regionmaster" [value]="region.region">
+                    {{region.region}}</mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['region'].invalid && doctorForm.controls['region'].touched">
+                Region is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">PinCode</mat-label>
+            <input class="mat" formControlName="pincode" matInput>
+            <mat-error
+                *ngIf="submitted && doctorForm.controls['pincode'].hasError('required') && doctorForm.controls['pincode'].touched">
+                pincode is required.
+            </mat-error>
+            <mat-error
+                *ngIf="doctorForm.controls['pincode'].hasError('pattern') && doctorForm.controls['pincode'].touched">
+                Please enter a valid 6-digit pincode.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <label>Status :
+            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+        </label>
+        <br>
+        <button mat-raised-button class="material-btn mr-2" type="button" (click)="onReset(f)">Clear</button>
+        <button mat-raised-button class="material-btn mr-2" type="submit">Submit</button>
+    </form>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Doctors Master</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
+        [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

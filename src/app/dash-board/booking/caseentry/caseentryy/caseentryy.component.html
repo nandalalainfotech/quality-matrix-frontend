@@ -1,0 +1,95 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Case Entry</legend>
+    <form [formGroup]="caseentryForm" (ngSubmit)="onOrderClick($event, caseentryForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label for="appointmentNo" class="font">Appointment No</mat-label>
+            <mat-select formControlName="appointmentNo" (selectionChange)="onChange($event.value)" class="mat">
+                <mat-option>- Select the Appointment No - </mat-option>
+                <mat-option *ngFor="let bookingentrys of bookingentry" [value]="bookingentrys.bookingId">
+                    {{bookingentrys.appNo}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && caseentryForm.controls['appointmentNo'].invalid && caseentryForm.controls['appointmentNo'].touched">
+                Appointment No is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Doctor Name</mat-label>
+            <mat-select formControlName="doctorname" class="mat">
+                <mat-option>- Select the Doctor Name - </mat-option>
+                <mat-option *ngFor="let doctorname of Doctormaster" [value]="doctorname.slNo">
+                    {{doctorname.doctorname}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && caseentryForm.controls['doctorname'].invalid && caseentryForm.controls['doctorname'].touched">
+                Doctor Name is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Hospital Name</mat-label>
+            <input class="mat" formControlName="hospname" matInput readonly />
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <label>Send Bill :
+            <mat-checkbox class="example-margin" formControlName="status" color="primary"></mat-checkbox>
+        </label>
+        <br>
+        <br>
+        <form [formGroup]="myForm">
+            <div formArrayName='times' fxLayout="column" fxLayoutGap="10px" style="margin-right: -35%;">
+                <div *ngFor="let time of this.fa?.value; let i = index;  trackBy:trackByFn" fxLayout="row">
+                    <div [formGroupName]="i" class="ang-form">
+                        <mat-form-field appearance="outline">
+                            <mat-label class="font">Machine</mat-label>
+                            <mat-select formControlName="mname" class="mat">
+                                <mat-option>- Select the Machine - </mat-option>
+                                <mat-option *ngFor="let mslno of machiness" [value]="mslno.machinename">
+                                    {{mslno.machinename}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        &nbsp;
+                        &nbsp;
+                        <mat-form-field appearance="outline">
+                            <mat-label class="font">Number of Case</mat-label>
+                            <input class="mat" type="number" formControlName="numofcase" matInput>
+                        </mat-form-field>
+                        &nbsp;
+                        &nbsp;
+                        <mat-form-field appearance="outline">
+                            <mat-label class="font">Charge</mat-label>
+                            <input class="mat" type="number" formControlName="charge" matInput>
+                        </mat-form-field>
+                        <button type="button" (click)="addGroup()" class="formbutton"><i
+                                class="fa fa-plus"></i></button> &nbsp;
+                        <button type="button" (click)="removeGroup(i)" class="formbutton"><i
+                                class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <mat-error *ngIf="submitted && fa.status === 'INVALID'" class="invalid-feedback">
+                    <p *ngIf="fa.status === 'INVALID'" style="margin-top: -20px; font-size: 10px;">Machine Details is
+                        required</p>
+                </mat-error>
+            </div><br>
+        </form>
+        <br>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">Clear</button>
+        <button mat-button type="submit" class="material-btn mr-2">Submit</button>
+    </form>
+</fieldset>
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Case Entry</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

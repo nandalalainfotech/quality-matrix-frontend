@@ -1,0 +1,28 @@
+<button type="button" value="close" class="closed col-sm-1" (click)="onCrossClick($event)">
+    <span aria-hidden="true">&times;</span>
+</button>
+<ng-container>
+    <div class="date-list">
+        <span>Request Service</span>
+    </div>
+    <div class="popup">
+        <mat-nav-list>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{details.data.dslno2.doctorname}}
+        </mat-nav-list>
+
+        <mat-nav-list style="padding: 9px;">
+            <i class="fa fa-clock-o" style="color:red"></i>
+            {{details.data.date | date: "MMM-dd-yyyy" }}&nbsp;/{{details.data.time}}
+        </mat-nav-list>
+
+        <mat-nav-list style="padding: 9px;">
+            <i class="fa fa-map-marker" style='color:red'></i>
+            {{details.data.dslno2.addressline1}}&nbsp;{{details.data.dslno2.addressline2}}&nbsp;,{{details.data.dslno2.city}},<br>{{details.data.dslno2.state}}&nbsp;,{{details.data.dslno2.pincode}}.
+        </mat-nav-list>
+
+        <mat-nav-list style="padding: 9px;">
+            <i class="fa fa-cogs" aria-hidden="true" style='color:red'></i>
+            Machine Name:&nbsp;&nbsp;{{details.data.mslno2.machinename}}
+        </mat-nav-list>
+    </div>
+</ng-container>

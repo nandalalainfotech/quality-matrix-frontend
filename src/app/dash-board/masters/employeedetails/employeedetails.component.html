@@ -1,0 +1,145 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Employee Details</legend>
+    <form class="my-form" [formGroup]="employeedetailsForm" (ngSubmit)="onOrderClick($event, employeedetailsForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Employee Name</mat-label>
+            <input matInput formControlName="employeename" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['employeename'].invalid && employeedetailsForm.controls['employeename'].touched">
+               Employee Name is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Email Address</mat-label>
+            <input matInput placeholder="Email" formControlName="emailid" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['emailid'].hasError('required') && employeedetailsForm.controls['emailid'].touched">
+                Email is required.
+            </mat-error>
+            <mat-error
+                *ngIf="employeedetailsForm.controls['emailid'].hasError('email') && employeedetailsForm.controls['emailid'].touched">
+                Invalid email format.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Contact Number</mat-label>
+            <input matInput placeholder="contactnumber" formControlName="contactnumber" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['contactnumber'].hasError('required') && employeedetailsForm.controls['contactnumber'].touched">
+                contactnumber is required.
+            </mat-error>
+            <mat-error
+                *ngIf="employeedetailsForm.controls['contactnumber'].hasError('pattern') && employeedetailsForm.controls['contactnumber'].touched">
+                Please enter a valid 10-digit contactnumber.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Company Name</mat-label>
+            <input matInput formControlName="companyname" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['companyname'].invalid && employeedetailsForm.controls['companyname'].touched">
+                Company Name is required.
+            </mat-error>
+        </mat-form-field>
+        <br><br>
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Address Line 1</mat-label>
+            <input matInput formControlName="addressline1" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['addressline1'].invalid && employeedetailsForm.controls['addressline1'].touched">
+                Address Line 1 is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Address Line 2</mat-label>
+            <input matInput formControlName="addressline2" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['addressline2'].invalid && employeedetailsForm.controls['addressline2'].touched">
+                Address Line 2 is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">City</mat-label>
+            <input matInput formControlName="city" class="mat">
+            <mat-error *ngIf="submitted && employeedetailsForm.controls['city'].invalid && employeedetailsForm.controls['city'].touched">
+                City is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">State</mat-label>
+            <input matInput formControlName="state" class="mat">
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['state'].invalid && employeedetailsForm.controls['state'].touched">
+                State is required.
+            </mat-error>
+        </mat-form-field>
+        <br> <br>
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Course Name</mat-label>
+            <mat-select formControlName="slNo" class="mat">
+                <mat-option>- Select the Course - </mat-option>
+                <mat-option *ngFor="let coursename of course" [value]="coursename.slNo">
+                    {{coursename.coursename}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['slNo'].invalid && employeedetailsForm.controls['slNo'].touched">
+                Course Name is required.
+            </mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field color="coursename.value!" appearance="outline">
+            <mat-label class="font">Course Name</mat-label>
+            <mat-select matInput formControlName="coursename" required class="mat" >
+                <mat-option value="primary">- Select the Region -</mat-option>
+                <mat-option *ngFor="let coursename of course" [value]="coursename.coursename">
+                    {{coursename.coursename}}</mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['coursename'].invalid && employeedetailsForm.controls['coursename'].touched">
+                Course Name is required.
+            </mat-error>
+        </mat-form-field> -->
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">PinCode</mat-label>
+            <input class="mat" formControlName="pincode" matInput>
+            <mat-error
+                *ngIf="submitted && employeedetailsForm.controls['pincode'].hasError('required') && employeedetailsForm.controls['pincode'].touched">
+                pincode is required.
+            </mat-error>
+            <mat-error
+                *ngIf="employeedetailsForm.controls['pincode'].hasError('pattern') && employeedetailsForm.controls['pincode'].touched">
+                Please enter a valid 6-digit pincode.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <label>Status :
+            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+        </label>
+        <br>
+        <button mat-raised-button class="material-btn mr-2" type="button" (click)="onReset(f)">Clear</button>
+        <button mat-raised-button class="material-btn mr-2" type="submit">Submit</button>
+    </form>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Doctors Master</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [enableFilter]="true" [enableSorting]="true" [pagination]="true" [showToolPanel]="true"
+        [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

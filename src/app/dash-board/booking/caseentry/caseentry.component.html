@@ -1,0 +1,10 @@
+<div class="manu-breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+</div>
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="./app-caseentryy" routerLinkActive #CaseEntryyTab="routerLinkActive"
+        [active]="CaseEntryyTab.isActive">Case Entry</a>
+</nav>
+
+<router-outlet></router-outlet>

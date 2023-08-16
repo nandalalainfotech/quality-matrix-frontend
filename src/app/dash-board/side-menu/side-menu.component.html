@@ -1,0 +1,177 @@
+<div [@.disabled]="temporaryDisabled">
+    <div class="side-menu" *ngIf="isShow" [@sideMenu]>
+        <div class="row">
+            <mat-nav-list class="navbar navbar-default" role="navigation">
+                <div class="side-menu-container">
+                    <ul class="nav navbar-nav">
+                        <mat-list id="dropdown" title="Masters" *ngIf="role == 'Admin'">
+                            <a data-toggle="collapse" href="#Masters"
+                                [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''">
+                                <mat-icon [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''"
+                                    style="vertical-align: middle;margin-top: 4px;">home</mat-icon>
+                                <span [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''">Masters
+                                </span>
+                            </a>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Doctorsmaster" routerLink="./app-masters/app-doctorsmaster"
+                                            [ngClass]="childMenuString == 'Doctorsmaster' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Doctorsmaster')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Doctorsmaster' ? 'is-active' : ''">calendar_today</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Doctorsmaster' ? 'is-active' : ''">Doctors
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Employeedetails" routerLink="./app-masters/app-employeedetails"
+                                            [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Employeedetails')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''">account_circle</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''">Employee Details
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Employeedetails" routerLink="./app-masters/app-course"
+                                            [ngClass]="childMenuString == 'Course' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Course')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Course' ? 'is-active' : ''">account_circle</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Course' ? 'is-active' : ''">Course Details
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Employeemaster" routerLink="./app-masters/app-employeemaster"
+                                            [ngClass]="childMenuString == 'Employeemaster' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Employeemaster')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Employeemaster' ? 'is-active' : ''">account_circle</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Employeemaster' ? 'is-active' : ''">Employee
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Machinemaster" routerLink="./app-masters/app-machinemaster"
+                                            [ngClass]="childMenuString == 'Machinemaster' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Machinemaster')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Machinemaster' ? 'is-active' : ''">medical_services</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Machinemaster' ? 'is-active' : ''">Executive
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Masters" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Regionmaster" routerLink="./app-masters/app-regionmaster"
+                                            [ngClass]="childMenuString == 'Regionmaster' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Masters', 'Regionmaster')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Regionmaster' ? 'is-active' : ''">language</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Regionmaster' ? 'is-active' : ''">Region
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div> 
+                        </mat-list>
+                        <!-- ------------second ------------ -->
+                        <mat-list id="dropdown" title="Booking">
+                            <a data-toggle="collapse" href="#Booking"
+                                [ngClass]="parentMenuString == 'Booking' ? 'is-active' : ''">
+                                <mat-icon [ngClass]="parentMenuString == 'Booking' ? 'is-active' : ''"
+                                    style="vertical-align: middle;margin-top: 4px;">description</mat-icon>
+                                <span [ngClass]="parentMenuString == 'Booking' ? 'is-active' : ''">Booking
+                                </span>
+                            </a>
+                            <div id="Booking" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="Appointment"
+                                            routerLink="./app-booking/app-appointment/app-bookingentry"
+                                            [ngClass]="childMenuString == 'Appointment' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Booking', 'Appointment')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'Appointment' ? 'is-active' : ''">assignment</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'Appointment' ? 'is-active' : ''">Appointment
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Booking" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="CaseEntry"
+                                            routerLink="./app-booking/app-caseentry/app-caseentryy"
+                                            [ngClass]="childMenuString == 'CaseEntry' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Booking', 'CaseEntry')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'CaseEntry' ? 'is-active' : ''">assignment</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'CaseEntry' ? 'is-active' : ''">CaseEntry
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="Booking" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <mat-list title="CalendarTable" routerLink="./app-booking/app-calendar-table"
+                                            [ngClass]="childMenuString == 'CalendarTable' ? 'is-active' : ''"
+                                            (click)="onMenuChildClick('Booking', 'CalendarTable')">
+                                            <span>
+                                                <mat-icon
+                                                    [ngClass]="childMenuString == 'CalendarTable' ? 'is-active' : ''">calendar_month</mat-icon>
+                                            </span>
+                                            <a><span [ngClass]="childMenuString == 'CalendarTable' ? 'is-active' : ''">Calendar
+                                                </span></a>
+                                        </mat-list>
+                                    </ul>
+                                </div>
+                            </div>
+                        </mat-list>
+                    </ul>
+                </div>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>

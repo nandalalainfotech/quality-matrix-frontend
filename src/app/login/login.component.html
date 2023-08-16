@@ -1,0 +1,43 @@
+<body>
+    <div class="limiter">
+        <div class="container-login100  loginback">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form" [formGroup]="loginForm"
+                    (ngSubmit)="onLoginClick($event, loginForm)">
+                    <span class="login100-form-title p-b-49">
+                        <img class="logo" src="../../assets/images/logo_nanda.png">
+                    </span>
+                    <h2 class="title">Sign In</h2>
+                    <br>
+                    <mat-form-field class="field1" appearance="outline">
+                        <mat-label class="font">User Name</mat-label>
+                        <mat-icon matPrefix>account_circle</mat-icon>
+                        <input style="font-size: 17px;" formControlName="username" matInput placeholder="Username">
+                        <mat-error
+                            *ngIf="submitted && loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+                            User Name is required.
+                        </mat-error>
+                    </mat-form-field><br>
+                    <mat-form-field class="field1" appearance="outline">
+                        <mat-icon matPrefix>lock</mat-icon>
+                        <mat-label>Password</mat-label>
+                        <input matInput #password1 formControlName="password" style="font-size: 17px;" type="Password"
+                            placeholder="Password">
+                        <button type="button" mat-icon-button matSuffix (click)="changeType(password1, 1)">
+                            <mat-icon>{{toggle1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error
+                            *ngIf="submitted && loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                            Password is required.
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="container-login100-form-btn p-t-30 ">
+                        <button mat-button type="submit" style="background-color: rgb(10, 51, 98); color: #ffff;">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

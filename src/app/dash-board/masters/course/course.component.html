@@ -1,0 +1,41 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Course Details</legend>
+    <form [formGroup]="courseForm" (ngSubmit)="onUserClick($event, courseForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Course Name</mat-label>
+            <input class="mat" formControlName="coursename" matInput>
+            <mat-error
+                *ngIf="submitted && courseForm.controls['coursename'].invalid && courseForm.controls['coursename'].touched">
+                Course Nmae is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Validity</mat-label>
+            <input matInput [matDatepicker]="dp" formControlName="validity" class="mat" />
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+            <mat-error
+                *ngIf="submitted && courseForm.controls['validity'].invalid && courseForm.controls['validity'].touched">
+                Date is required.
+            </mat-error>
+        </mat-form-field>
+        <br><br>
+        <label>Status :
+        </label>
+        <br>
+        <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+        <br>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">Clear</button>
+        <button mat-button type="submit" class="material-btn mr-2">Submit</button>
+    </form>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Course Details</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

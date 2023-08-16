@@ -1,0 +1,27 @@
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Region Master</legend>
+    <form [formGroup]="regionForm" (ngSubmit)="onUserClick($event, regionForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Region</mat-label>
+            <input class="mat" formControlName="region" matInput>
+            <mat-error
+                *ngIf="submitted && regionForm.controls['region'].invalid && regionForm.controls['region'].touched">
+                Region is required.
+            </mat-error>
+        </mat-form-field><br>
+        <label>Status :
+        </label>
+        <br>
+        <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+        <br>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">Clear</button>
+        <button mat-button type="submit" class="material-btn mr-2">Submit</button>
+    </form>
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Region Master</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

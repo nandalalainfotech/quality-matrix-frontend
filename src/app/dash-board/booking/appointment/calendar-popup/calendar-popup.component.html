@@ -1,0 +1,25 @@
+<button type="button" value="close" class="closed col-sm-1" (click)="onCrossClick($event)">
+    <span aria-hidden="true">&times;</span>
+</button>
+<ng-container *ngFor="let item of details">
+    <div class="date-list">
+        <span>Date:{{item.payload.date | date: "dd-MM-yyyy"}}</span>
+    </div>
+    &nbsp;
+    <table class="table table-bordered">
+        <ng-container matColumnDef="Machine Name">
+            <tr>
+                <th mat-header-cell style="font-weight: 700;color: black;"> Machine Name </th>
+                <th mat-header-cell style="font-weight: 700;color: black;"> Doctor Name </th>
+                <th mat-header-cell style="font-weight: 700;color: black;"> Hospital</th>
+                <th mat-header-cell style="font-weight: 700;color: black;"> Time</th>
+            </tr>
+        </ng-container>
+        <ng-container matColumnDef="Doctor Name">
+            <td mat-cell>{{item.payload.mslno2.machinename}}</td>
+            <td mat-cell>{{item.payload.dslno2.doctorname}} </td>
+            <td mat-cell>{{item.payload.hospital}} </td>
+            <td mat-cell>{{item.payload.time}} </td>
+        </ng-container>
+    </table>
+</ng-container>

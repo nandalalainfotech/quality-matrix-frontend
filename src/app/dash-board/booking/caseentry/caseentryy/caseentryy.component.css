@@ -1,0 +1,23 @@
+.material-btn {
+    float: right !important;
+    background: var(--color_l1) !important;
+    color: #ffff;
+}
+
+.check {
+    color: var(--color_l1) !important;
+}
+
+.formbutton {
+    background: var(--color_l1) !important;
+    color: #ffff;
+    width: 27px;
+    height: 37px;
+    margin-top: 4px;
+}
+
+.ang-form {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: inline-block;
+}

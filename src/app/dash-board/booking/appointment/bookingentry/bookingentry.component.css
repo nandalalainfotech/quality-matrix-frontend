@@ -1,0 +1,10 @@
+.material-btn {
+    float: right !important;
+    background: var(--color_l1) !important;
+    color: #ffff;
+}
+
+.mat-input-element[type=time] {
+    line-height: 1;
+    font-size: 15px;
+}

@@ -1,0 +1,31 @@
+.date-list {
+    background-color: #1c4365 !important;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+    color: #fff !important;
+}
+
+::ng-deep .closed {
+    top: -1px;
+    font-size: 29px;
+    left: 3px;
+    background-color: transparent;
+    border: 0px solid;
+    color: #fff !important;
+    font-weight: 900;
+    float: right;
+}
+
+::ng-deep.modal-dialog {
+    width: 890px !important;
+    margin: 30px auto;
+}
+
+.popup {
+    font-family: Helvetica, sans-serif !important;
+    padding: 20px;
+    margin-left: 10px;
+    font-weight: 700;
+    text-align: justify;
+    font-size: 14px;
+}

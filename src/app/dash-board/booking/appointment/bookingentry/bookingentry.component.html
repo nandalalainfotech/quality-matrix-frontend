@@ -1,0 +1,104 @@
+<fieldset class="scheduler-border" *ngIf="role == 'Admin'">
+    <legend class="scheduler-border">Booking Entry</legend>
+    <form [formGroup]="bookingForm" (ngSubmit)="onUserClick($event, bookingForm,f)" #f="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Appointment No</mat-label>
+            <input class="mat" formControlName="appNo" matInput readonly />
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Executive</mat-label>
+            <mat-select formControlName="mslno" class="mat">
+                <mat-option>- Select the Executive - </mat-option>
+                <mat-option *ngFor="let mslno of machiness" [value]="mslno.slNo">
+                    {{mslno.machinename}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['mslno'].invalid && bookingForm.controls['mslno'].touched">
+                Executive is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Doctor</mat-label>
+            <mat-select formControlName="dslno" class="mat">
+                <mat-option>- Select the Doctor - </mat-option>
+                <mat-option *ngFor="let dslno of Doctormaster" [value]="dslno.slNo">
+                    {{dslno.doctorname}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['mslno'].invalid && bookingForm.controls['mslno'].touched">
+                Doctor is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Hospital</mat-label>
+            <mat-select formControlName="hospital" class="mat">
+                <mat-option>- Select the Hospital - </mat-option>
+                <mat-option *ngFor="let hospital of Doctormaster" [value]="hospital.hospitalname">
+                    {{hospital.hospitalname}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['hospital'].invalid && bookingForm.controls['hospital'].touched">
+                Hospital is required.
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Employee</mat-label>
+            <mat-select formControlName="staff" class="mat">
+                <mat-option>- Select the Employee - </mat-option>
+                <mat-option *ngFor="let staff of arr" [value]="staff.username">
+                    {{staff.username}}
+                </mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['staff'].invalid && bookingForm.controls['staff'].touched">
+                Employee is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label class="font">Date</mat-label>
+            <input matInput [matDatepicker]="dp" formControlName="date" class="mat" />
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['date'].invalid && bookingForm.controls['date'].touched">
+                Date is required.
+            </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <mat-form-field appearance="outline">
+            <mat-label style="font-size: 13px;">Time</mat-label>
+            <input type="time" matInput name="week" min="09:00" max="18:00" formControlName="time" inputId="timeonly" />
+            <mat-error
+                *ngIf="submitted && bookingForm.controls['time'].invalid && bookingForm.controls['time'].touched">
+                Time Duration is required.
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">Clear</button>
+        <button mat-button type="submit" class="material-btn mr-2">Submit</button>
+    </form>
+
+</fieldset>
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">Booking Entry</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents" [getRowStyle]="getRowStyle">
+    </ag-grid-angular>
+</fieldset>
+<!-- </app-add-popup> -->
