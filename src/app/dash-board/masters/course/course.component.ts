@@ -206,11 +206,31 @@ export class CourseComponent implements OnInit {
     this.insertUser = params.data.insertUser;
     this.insertDatetime = params.data.insertDatetime;
     this.courseForm.patchValue({
-      'region': params.data.region,
+      'coursename': params.data.coursename,
       'validity': new Date(params.data.validity),
       'status': params.data.status
     });
   }
+
+  
+  // onEditButtonClick(params: any) {
+  //   this.employeeId = params.data.employeeId;
+  //   this.insertUser = params.data.insertUser;
+  //   this.insertDatetime = params.data.insertDatetime;
+  //   this.employeedetailsForm.patchValue({
+  //     'employeename': params.data.employeename,
+  //     'contactnumber': params.data.contactnumber,
+  //     'emailid': params.data.emailid,
+  //     'companyname': params.data.companyname,
+  //     'addressline1': params.data.addressline1,
+  //     'addressline2': params.data.addressline2,
+  //     'city': params.data.city,
+  //     'state': params.data.state,
+  //     'slNo': params.data.slNo,
+  //     'pincode': params.data.pincode,
+  //     'status': params.data.status
+  //   });
+  // }
   onDeleteButtonClick(params: any) {
     this.courseManager.coursedelete(params.data.slNo).subscribe((response: any) => {
       for (let i = 0; i < this.course.length; i++) {
