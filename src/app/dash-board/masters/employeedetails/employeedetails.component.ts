@@ -1,7 +1,8 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 import { GridOptions } from 'ag-grid-community';
 import { deserialize } from 'serializer.ts/Serializer';
 import { AuditComponent } from 'src/app/shared/audit/audit.component';
@@ -22,6 +23,7 @@ import { Utils } from 'src/app/shared/utils/utils';
 })
 export class EmployeedetailsComponent implements OnInit {
 
+  @Input() lang: any;
   frameworkComponents: any;
   employeedetailsForm: FormGroup | any;
   resetForm: FormGroup | any;
@@ -56,6 +58,7 @@ export class EmployeedetailsComponent implements OnInit {
     private calloutService: CalloutService,
     private formBuilder: FormBuilder,
     private courseManager: CourseManager,
+    private translateService: TranslateService,
     private authManager: AuthManager,
     private modalService: NgbModal) {
     this.frameworkComponents = {
@@ -71,6 +74,11 @@ export class EmployeedetailsComponent implements OnInit {
     let users: any[] = [];
     // this.control.markAsTouched();
     this.username = this.authManager.getcurrentUser.username;
+
+    this.authManager.currentUserSubject.subscribe((object: any) => {
+      let lang = (object.language2?.name);
+      this.translateService.setDefaultLang(lang);
+    })
 
     this.authManager.currentUserSubject.subscribe((object: any) => {
       let rgb = Utils.hexToRgb(object.theme);

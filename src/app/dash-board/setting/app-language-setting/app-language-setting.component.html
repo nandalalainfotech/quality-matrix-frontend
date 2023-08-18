@@ -1,18 +1,21 @@
 <fieldset class="scheduler-border">
-    <legend class="scheduler-border">{{'Application Language Setting'|translate}}</legend>
-    <div class="formData">
-        <form [formGroup]="applanguagesettingForm" (ngSubmit)="onUserClick($event, applanguagesettingForm)">
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 ">
-                    <div class="form-group">
-                        <label path="name" for="name" cssClass="required"> {{'Name'|translate}}</label>
-                        <input formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                            <div *ngIf="f.name.errors.required">{{' Name is required'|translate}}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-3 col-sm-3 ">
+    <legend class="scheduler-border">{{'Application Language Setting' | translate}}</legend>
+    <!-- <div class="formData"> -->
+    <form [formGroup]="applanguagesettingForm" (ngSubmit)="onUserClick($event, applanguagesettingForm, f)" #f="ngForm">
+
+        <mat-form-field appearance="outline">
+            <mat-label class="font"> {{'Name' | translate}} </mat-label>
+                <input class="material" formControlName="name" matInput class="mat" />
+                <mat-error
+                    *ngIf="submitted && applanguagesettingForm.controls['name'].hasError('required') && applanguagesettingForm.controls['name'].touched">
+                   {{' Name is required' | translate}}
+                </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+        <!-- <div class="col-xs-3 col-sm-3 ">
                     <div class="form-group">
                         <input class="form-control" path="id" type="hidden" />
                         <label path="description" for="description" cssClass="required">{{'Description'|translate}}</label>
@@ -21,8 +24,22 @@
                             <div *ngIf="f.description.errors.required"> {{'Description is required'|translate}}</div>
                         </div>
                     </div>
-                </div> 
-                <div class="col-xs-3 col-sm-3 ">
+                </div>  -->
+
+        <mat-form-field appearance="outline">
+            <mat-label class="font">{{'Description' | translate }}</mat-label>
+                <input class="material" formControlName="description" matInput class="mat" />
+                <mat-error
+                    *ngIf="submitted && applanguagesettingForm.controls['description'].hasError('required') && applanguagesettingForm.controls['description'].touched">
+                    {{'Description is Required' | translate }}
+                </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+
+        <!-- <div class="col-xs-3 col-sm-3 ">
                     <div class="form-group">
                         <input class="form-control" path="id" type="hidden" />
                         <label path="status" for="status" cssClass="required">{{'Status'|translate}}</label>
@@ -31,27 +48,31 @@
                             <div *ngIf="f.status.errors.required">{{'Status is required'|translate}}</div>
                         </div>
                     </div>
-                </div> 
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="form-group text-right">
-                            <button type="submit" class="btn btn-primary mr-2">
-                                {{'Submit' | translate }}
-                            </button>
-                            <button type="button" class="btn btn-warning mr-2" (click)="onReset()">
-                                {{'Clear' | translate }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </form>
-        </div>
-    
-    </fieldset>
-    
-    <fieldset class="scheduler-border">
-        <legend class="scheduler-border">{{'Status Details'|translate}}</legend>
-        <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;" [pagination]="true" [frameworkComponents]="frameworkComponents">
-        </ag-grid-angular>
-    </fieldset>
+                </div>  -->
+
+        <mat-form-field appearance="outline">
+            <mat-label class="font"> {{'Status' | translate }}</mat-label>
+                <input class="material" formControlName="status" matInput class="mat" />
+                <mat-error
+                    *ngIf="submitted && applanguagesettingForm.controls['status'].hasError('required') && applanguagesettingForm.controls['status'].touched">
+                    {{'Status is Required' | translate }}
+                </mat-error>
+        </mat-form-field>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <br>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">{{' Clear' | translate }}</button>
+        <button mat-button type="submit" class="material-btn mr-2">{{' Submit' | translate }}</button>
+
+    </form>
+    <!-- </div> -->
+
+</fieldset>
+
+<fieldset class="scheduler-border">
+    <legend class="scheduler-border">{{'Status Details'| translate }}</legend>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
+        [pagination]="true" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+</fieldset>

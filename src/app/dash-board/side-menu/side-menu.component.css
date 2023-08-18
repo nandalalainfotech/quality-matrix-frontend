@@ -18,6 +18,10 @@
     overflow: hidden;
 }
 
+.hea{
+width:119px;
+}
+
 .side_menu1 {
     position: fixed;
     z-index: 999;

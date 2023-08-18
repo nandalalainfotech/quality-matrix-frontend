@@ -1,101 +1,101 @@
 <fieldset class="scheduler-border">
-    <legend class="scheduler-border">Registration</legend>
+    <legend class="scheduler-border">{{'Registration' | translate}}</legend>
     <form [formGroup]="registerForm" (ngSubmit)="onUserClick($event, registerForm,f)" #f="ngForm">
         <mat-form-field appearance="outline">
-            <mat-label class="font">FirstName</mat-label>
+            <mat-label class="font">{{'First Name' | translate}}</mat-label>
             <input class="material" formControlName="firstname" matInput class="mat">
             <mat-error
                 *ngIf="submitted && registerForm.controls['firstname'].hasError('required') && registerForm.controls['firstname'].touched">
-                FirstName is required.
+                {{'FirstName is required' | translate}}
             </mat-error>
         </mat-form-field>
         &nbsp;
         &nbsp;
         &nbsp;
         <mat-form-field appearance="outline">
-            <mat-label class="font">LastName</mat-label>
+            <mat-label class="font">{{'Last Name' | translate}}</mat-label>
             <input class="material" formControlName="lastname" matInput class="mat">
             <mat-error
                 *ngIf="submitted && registerForm.controls['lastname'].hasError('required') && registerForm.controls['lastname'].touched">
-                LastName is required.
+               {{' Last Name is required' | translate}}
             </mat-error>
         </mat-form-field>
         &nbsp;
         &nbsp;
         &nbsp;
         <mat-form-field appearance="outline">
-            <mat-label class="font">UserName</mat-label>
+            <mat-label class="font">{{'User Name' | translate}}</mat-label>
             <input class="material" formControlName="username" matInput class="mat">
             <mat-error
                 *ngIf="submitted && registerForm.controls['username'].hasError('required') && registerForm.controls['username'].touched">
-                UserName is required.
+                {{'User Name is required' | translate}}
             </mat-error>
         </mat-form-field>
         &nbsp;
         &nbsp;
         &nbsp;
         <mat-form-field appearance="outline">
-            <mat-label class="font">Role Type</mat-label>
+            <mat-label class="font">{{'Role Type' | translate}}</mat-label>
             <mat-select formControlName="rolename" class="mat">
-                <mat-option>- Select the Machine - </mat-option>
-                <mat-option value="Admin">Admin</mat-option>
-                <mat-option value="User">User</mat-option>
+                <mat-option>- {{'Select the Machine' | translate}} - </mat-option>
+                <mat-option value="Admin">{{'Admin' | translate}}</mat-option>
+                <mat-option value="User">{{'User' | translate}}</mat-option>
             </mat-select>
             <mat-error
                 *ngIf="submitted && registerForm.controls['rolename'].hasError('required') && registerForm.controls['rolename'].touched">
-                Role Type is required.
+                {{'Role Type is required' | translate}}
             </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="outline">
-            <mat-label class="font">Status</mat-label>
+            <mat-label class="font">{{'Status' | translate}}</mat-label>
             <mat-select formControlName="status" class="mat">
-                <mat-option>- Select the Machine - </mat-option>
+                <mat-option>- {{'Select the Machine' | translate}} - </mat-option>
                 <mat-option value="A">A</mat-option>
                 <mat-option value="B">B</mat-option>
                 <mat-option value="C">C</mat-option>
             </mat-select>
             <mat-error
                 *ngIf="submitted && registerForm.controls['status'].hasError('required') && registerForm.controls['status'].touched">
-                Status is required.
+               {{' Status is required' | translate}}
             </mat-error>
         </mat-form-field>
         &nbsp;
         &nbsp;
         &nbsp;
         <mat-form-field appearance="outline">
-            <mat-label class="font">Mobile Number</mat-label>
+            <mat-label class="font">{{'Mobile Number' | translate}}</mat-label>
             <input matInput formControlName="mobileno" class="mat" maxlength="10">
             <mat-error
                 *ngIf="registerForm.controls['mobileno'].hasError('required') && registerForm.controls['mobileno'].touched">
-                Mobile Number is required.
+               {{' Mobile Number is required' | translate}}
             </mat-error>
             <mat-error
                 *ngIf="registerForm.controls['mobileno'].hasError('pattern') && registerForm.controls['mobileno'].touched">
-                Mobile Number is Invalid.
+                {{'Mobile Number is Invalid' | translate}}
             </mat-error>
         </mat-form-field>
         &nbsp;
         &nbsp;
         <mat-form-field appearance="outline">
-            <mat-label class="font">Email</mat-label>
+            <mat-label class="font">{{'Email' | translate}}</mat-label>
             <input matInput formControlName="email" class="mat">
             <mat-error
                 *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched">
-                Email is required.
+               {{' Email is required' | translate}}
             </mat-error>
             <mat-error
                 *ngIf="registerForm.controls['email'].hasError('email') && registerForm.controls['email'].touched">
-                Email is Invalid.
+               {{' Email is Invalid' | translate}}
             </mat-error>
         </mat-form-field>
         <br>
-        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">Clear</button>
-        <button mat-button type="submit" class="material-btn mr-2">Submit</button>
+        <button mat-button type="button" class="material-btn mr-2" (click)="onReset(f)">{{'Clear' | translate}}</button>
+        <button mat-button type="submit" class="material-btn mr-2">{{'Submit' | translate}}</button>
     </form>
 </fieldset>
 <fieldset class="scheduler-border">
-    <legend class="scheduler-border">RegistredDetails</legend>
+    <legend class="scheduler-border">{{'RegistredDetails' | translate}}</legend>
     <ag-grid-angular #agGrid class="ag-theme-balham" [gridOptions]="gridOptions" style="width: 100%; height: 350px;"
         [pagination]="true" [frameworkComponents]="frameworkComponents">
     </ag-grid-angular>

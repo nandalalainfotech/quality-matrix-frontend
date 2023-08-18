@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { GridOptions } from 'ag-grid-community';
@@ -224,13 +224,14 @@ export class AppLanguageSettingComponent implements OnInit {
         });
     }
 
-    onUserClick(event: any, applanguagesettingForm: any) {
-        // console.log("applanguagesetting001mb--->", applanguagesetting);
-        this.markFormGroupTouched(this.applanguagesettingForm);
-        this.submitted = true;
-        if (this.applanguagesettingForm.invalid) {
-            return;
-        }
+
+        onUserClick(data: NgForm, applanguagesettingForm: any, form: any) {
+            console.log("event-->", this.f);
+            this.markFormGroupTouched(this.applanguagesettingForm);
+            this.submitted = true;
+            if (this.applanguagesettingForm.invalid) {
+                return;
+            }
         let applanguagesetting001mb = new Applanguagesetting001mb();
         applanguagesetting001mb.description = this.f.description.value ? this.f.description.value : "";
         applanguagesetting001mb.name = this.f.name.value ? this.f.name.value : "";
@@ -259,13 +260,15 @@ export class AppLanguageSettingComponent implements OnInit {
                 this.loaddata();
                 this.applanguagesettingForm.reset();
                 this.submitted = false;
+                data.resetForm();
             })
         }
 
     }
 
-    onReset() {
+    onReset(data: any) {
         this.applanguagesettingForm.reset();
+        data.resetForm();
         this.submitted = false;
     }
 }

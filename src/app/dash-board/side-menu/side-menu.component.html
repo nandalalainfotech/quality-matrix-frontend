@@ -9,7 +9,7 @@
                                 [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''">
                                 <mat-icon [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''"
                                     style="vertical-align: middle;margin-top: 4px;">home</mat-icon>
-                                <span [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''">Masters
+                                <span [ngClass]="parentMenuString == 'Masters' ? 'is-active' : ''">{{'Masters' | translate}}
                                 </span>
                             </a>
                             <!-- <div id="Masters" class="panel-collapse collapse">
@@ -38,7 +38,7 @@
                                                 <mat-icon
                                                     [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''">account_circle</mat-icon>
                                             </span>
-                                            <a><span [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''">Employee Details
+                                            <a><span  [ngClass]="childMenuString == 'Employeedetails' ? 'is-active' : ''">{{'Employee Details' | translate}}
                                                 </span></a>
                                         </mat-list>
                                     </ul>
@@ -54,7 +54,7 @@
                                                 <mat-icon
                                                     [ngClass]="childMenuString == 'Course' ? 'is-active' : ''">account_circle</mat-icon>
                                             </span>
-                                            <a><span [ngClass]="childMenuString == 'Course' ? 'is-active' : ''">Course Details
+                                            <a><span   [ngClass]="childMenuString == 'Course' ? 'is-active' : ''">{{'Course Details' | translate}}
                                                 </span></a>
                                         </mat-list>
                                     </ul>

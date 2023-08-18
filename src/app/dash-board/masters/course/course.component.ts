@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 import { GridOptions } from 'ag-grid-community';
 import { deserialize } from 'serializer.ts/Serializer';
 import { AuditComponent } from 'src/app/shared/audit/audit.component';
@@ -46,6 +47,7 @@ export class CourseComponent implements OnInit {
     private calloutService: CalloutService,
     private authManager: AuthManager,
     private datepipe: DatePipe,
+    private translateService: TranslateService,
     private dataSharedService: DataSharedService,
     private courseManager: CourseManager,
     private modalService: NgbModal) {
@@ -57,6 +59,12 @@ export class CourseComponent implements OnInit {
   ngOnInit() {
     this.createDataGrid001();
     this.username = this.authManager.getcurrentUser.username;
+
+    this.authManager.currentUserSubject.subscribe((object: any) => {
+      let lang = (object.language2?.name);
+      this.translateService.setDefaultLang(lang);
+    })
+    
     this.authManager.currentUserSubject.subscribe((object: any) => {
       let rgb = Utils.hexToRgb(object.theme);
 

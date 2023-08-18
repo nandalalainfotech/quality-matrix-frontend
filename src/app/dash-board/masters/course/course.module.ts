@@ -16,6 +16,18 @@ import { EmployeedetailsManager } from 'src/app/shared/services/restcontroller/b
 import { BreadcrumbModule } from '../../breadcrumb/breadcrumb.module';
 import { CourseRoutingModule } from './course-routing.module';
 import { CourseComponent } from './course.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export const environment = {
+	production: true,
+	appRootPrefix: '/<>'
+	};
+
+export function createTranslateLoader(http: HttpClient) {
+	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  }
 
 
 @NgModule({
@@ -42,6 +54,14 @@ import { CourseComponent } from './course.component';
     MatSelectModule,
     MatSlideToggleModule,
     MatButtonModule,
+    TranslateModule.forRoot({
+		  loader: {
+			provide: TranslateLoader,
+			useFactory: (createTranslateLoader),
+			deps: [HttpClient],
+		  },
+		  defaultLanguage: 'en-US',
+		}),
     AgGridModule.withComponents([])
   ],
   providers: [
